@@ -61,7 +61,7 @@ var index = ({ Store }) => class PostgresStore extends Store {
         return new Date(Math.ceil(((_b = (_a = sess === null || sess === void 0 ? void 0 : sess.cookie) === null || _a === void 0 ? void 0 : _a.expires) !== null && _b !== void 0 ? _b : new Date(Date.now() + this.ttl * 1000)).getTime() / 1000) * 1000).toISOString();
     }
     async pruneSessions(callback = () => { }) {
-        const now = new Date(Math.ceil(Date.now() / 1000) * 1000);
+        const now = new Date(Math.ceil(Date.now() / 1000) * 1000).toISOString();
         try {
             await this.beforeDatabaseAccess();
             await this.sql `
